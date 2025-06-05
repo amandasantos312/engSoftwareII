@@ -74,4 +74,4 @@ Livro --|> Publicacao
 Revista --|> Publicacao
 Jornal --|> Publicacao
 
-@enduml
+@enduml 

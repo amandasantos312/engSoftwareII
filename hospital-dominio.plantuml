@@ -120,4 +120,5 @@ Consulta "1" -- "1" Sala
 Consulta "1" -- "1" Medico: responsável
 
 Exame "1" -- "1" Consulta
+
 @enduml

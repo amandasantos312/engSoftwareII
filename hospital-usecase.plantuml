@@ -8,7 +8,7 @@ actor FuncionarioAdmins as Admin
 usecase "Realizar consulta" as UC1
 usecase "Emitir diagnóstico" as UC2
 usecase "Cadastrar procedimento" as UC3
-usecase "Pedir exame" as UC4
+usecase "Solicitar exame" as UC4
 usecase "Cadastrar paciente" as UC5
 usecase "Cadastrar equipe médica" as UC6
 usecase "Vincular funcionario a setor" as UC7
