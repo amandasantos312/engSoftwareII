@@ -1,0 +1,77 @@
+@startuml Biblioteca
+
+class Empresa {
+   - cnpj: String
+   - nome: String
+   - endereco: String
+   + cadastrarFuncionario(): String
+   + obterDados(): String
+}
+
+class Biblioteca {
+   - nome: String
+   - endereco: String
+   - listaFuncionarios: Funcionario[]
+   - listaPublicacoes(): Publicacoes[]
+   + adicionarPublicacao(): void
+   + removerPublicacao(): void
+}
+
+class Funcionario {
+   - id: int
+   - nome: String
+   - endereco: String 
+   - cargo: String
+   - salario: int
+   + realizarEmprestimo(): void
+   + realizarReserva(): void
+}
+
+class Publicacao {
+   - titulo: String
+   - autor: String
+   - ano: int
+   - tipo: String
+   + obterDetalhes(): String
+
+}
+
+class Livro {
+  - isbn: String
+}
+
+class Revista {
+  - issn: String
+}
+
+class Jornal {
+  - edicao: String 
+}
+
+class Emprestimo {
+  - dataEmprestimo: Date
+  - dataDevolucao: Date
+  + registrarEmprestimo(): void
+  + verificarVencimento(): void
+}
+
+class Reserva {
+  - dataReserva: Date
+  + registrarReserva(): void
+  + cancelarReserva(): void
+}
+
+Empresa o-- "1" Biblioteca
+Biblioteca o-- "0..*" Funcionario
+Biblioteca o-- "0..*" Publicacao
+Funcionario -- "0..*" Emprestimo
+Funcionario -- "0..*" Reserva
+Emprestimo -- "1" Publicacao
+Reserva -- "1" Publicacao
+
+
+Livro --|> Publicacao
+Revista --|> Publicacao
+Jornal --|> Publicacao
+
+@enduml

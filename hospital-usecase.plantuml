@@ -1,0 +1,31 @@
+@startuml Hospital
+
+actor Medico
+actor Enfermeiro
+actor FuncionarioAdmins as Admin
+
+
+usecase "Realizar consulta" as UC1
+usecase "Emitir diagnóstico" as UC2
+usecase "Cadastrar procedimento" as UC3
+usecase "Pedir exame" as UC4
+usecase "Cadastrar paciente" as UC5
+usecase "Cadastrar equipe médica" as UC6
+usecase "Vincular funcionario a setor" as UC7
+usecase "Medicar paciente" as UC8
+usecase "Reservar sala para internação" as UC9
+usecase "Acompanhar paciente" as UC10
+
+
+Medico --> UC1
+Medico --> UC2
+Medico --> UC3
+Medico --> UC4
+Admin --> UC5
+Admin --> UC6
+Admin --> UC7
+Enfermeiro --> UC8
+Enfermeiro --> UC9
+Enfermeiro --> UC10
+
+@enduml

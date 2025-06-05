@@ -1,0 +1,123 @@
+@startuml Hospital
+
+class Paciente {
+    + id: int
+    + nome: String
+    + dataNascimento: Date
+    + cpf: String
+    + telefone: String
+    + endereco: String
+}
+
+class Procedimento {
+    + id: int
+    + data: Date
+    + tipoPagamento: TipoPagamento
+}
+
+enum TipoPagamento {
+    Convenio
+    Particular
+}
+
+class Cirurgia {
+    + descricao: String
+}
+
+class Internacao {
+    + dataAlta: Date
+}
+
+class Consulta {
+    + receita: String
+    + diagnostico: String
+}
+
+class Exame {
+    + tipoExame: String
+    + resultado: String
+}
+
+class OutroProcedimento {
+    + descricao: String
+}
+
+Procedimento <|-- Cirurgia
+Procedimento <|-- Internacao
+Procedimento <|-- Consulta
+Procedimento <|-- Exame
+Procedimento <|-- OutroProcedimento
+
+Paciente "1" -- "0..*" Procedimento
+
+class Setor {
+    + id: int
+    + nome_setor: String
+}
+
+class subSetor {
+    + id: int
+    + nome: String
+}
+
+class Sala {
+    + numero: int
+    + tipo: TipoSala
+}
+
+enum TipoSala {
+    Cirurgia
+    Consultorio
+    Apartamento
+    Enfermaria
+    Exame
+}
+
+Setor "1" -- "0..*" subSetor
+subSetor "1" -- "0..*" Sala
+
+class Funcionario {
+    + id: int
+    + nome: String
+    + cargo: String
+    + salario: float
+}
+
+class Medico {
+    + crm: String
+    + especialidade: String
+}
+
+class Enfermeiro {
+    + coren: String
+}
+
+class Administrativo {
+    + setorAtuacao: String
+}
+
+Funcionario <|-- Medico
+Funcionario <|-- Enfermeiro
+Funcionario <|-- Administrativo
+
+Funcionario "1" -- "1" Setor: trabalha em >
+
+class Equipe {
+    + id: int
+}
+
+Equipe "1" -- "1" Medico: supervisor >
+Equipe "1" -- "1..*" Medico: medicos
+Equipe "1" -- "0..*" Enfermeiro: enfermeiros
+
+Cirurgia "1" -- "1" Sala
+Cirurgia "1" -- "1" Equipe
+
+Internacao "1" -- "1" Sala
+Internacao "1" -- "1" Medico: responável
+
+Consulta "1" -- "1" Sala
+Consulta "1" -- "1" Medico: responsável
+
+Exame "1" -- "1" Consulta
+@enduml
