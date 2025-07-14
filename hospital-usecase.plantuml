@@ -1,31 +1,36 @@
 @startuml Hospital
 
-actor Medico
-actor Enfermeiro
-actor FuncionarioAdmins as Admin
+actor Funcionario 
+actor Medico #lightblue;line:blue;line.bold;text:blue
+actor Enfermeiro #pink;line:red;line.bold;text:red
+actor FuncionarioAdmins as Admin #lightyellow;line:yellow;line.bold;text:yellow
 
 
-usecase "Realizar consulta" as UC1
-usecase "Emitir diagnóstico" as UC2
-usecase "Cadastrar procedimento" as UC3
-usecase "Solicitar exame" as UC4
-usecase "Cadastrar paciente" as UC5
+usecase "Cadastrar procedimento" as UC1
+
+usecase "Cadastrar paciente" as UC2
+usecase "Vincular funcionario a setor" as UC3
+usecase "Cadastrar forma de pagamento/convênio" as UC4
+
+usecase "Medicar paciente" as UC5
 usecase "Cadastrar equipe médica" as UC6
-usecase "Vincular funcionario a setor" as UC7
-usecase "Medicar paciente" as UC8
-usecase "Reservar sala para internação" as UC9
-usecase "Acompanhar paciente" as UC10
+usecase "Reservar sala para procedimentos" as UC7
+usecase "Atualizar prontuario" as UC8
 
 
-Medico --> UC1
-Medico --> UC2
-Medico --> UC3
-Medico --> UC4
-Admin --> UC5
-Admin --> UC6
-Admin --> UC7
-Enfermeiro --> UC8
-Enfermeiro --> UC9
-Enfermeiro --> UC10
+Medico --> Funcionario
+Enfermeiro --> Funcionario
+Admin --> Funcionario
+
+Medico --> UC1 #line:blue;line.bold;text:blue
+
+Admin --> UC2 #line:yellow;line.bold;text:yellow
+Admin --> UC3 #line:yellow;line.bold;text:yellow
+Admin --> UC4 #line:yellow;line.bold;text:yellow
+
+Enfermeiro --> UC5 #line:red;line.bold;text:red
+Enfermeiro --> UC6 #line:red;line.bold;text:red
+Enfermeiro --> UC7 #line:red;line.bold;text:red
+Enfermeiro --> UC8 #line:red;line.bold;text:red
 
 @enduml
